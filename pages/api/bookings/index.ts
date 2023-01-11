@@ -6,7 +6,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case "GET":
-      const bookings = await prisma.booking.findMany();
+      const bookings = await prisma.booking.findMany({
+        include: {
+          cars: true,
+        },
+      });
       res.status(200).json(bookings);
       break;
     case "POST":

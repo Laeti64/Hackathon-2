@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+model Car {
+  id           String    @id @unique @default(uuid())
+  year         Int
+  imgUrl       String
+  imgUrl2      String?
+  imgUrl3      String?
+  grayCardUrl  String
+  description  String
+  autonomie    Int
+  mileAge      Int
+  nbPlaces     Int
+  batterie     String
+  puissance    String
+  capacity     String
+  nbPortes     Int
+  barCodeUrl   String
+  registration String
+  isAvailable  Boolean   @default(true)
+  autonomous   Boolean   @default(false)
+  tempsCharge  Int
+  prixKm       Int
+  prixJour     Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
+  category     Category  @relation(fields: [categoryId], references: [id])
+  categoryId   String
+  brand        Brand     @relation(fields: [brandId], references: [id])
+  brandId      String
+  connector    Connector @relation(fields: [connectorId], references: [id])
+  connectorId  String
+  model        Model     @relation(fields: [modelId], references: [id])
+  modelId      String
+  agencies     Agency[]
+  bookings     Booking[]
+}
+
+model Category {
+  id        String   @id @unique @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  cars      Car[]
+}
+
+model Brand {
+  id        String   @id @unique @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  cars      Car[]
+}
+
+model Agency {
+  id        String   @id @unique @default(uuid())
+  name      String
+  address   String
+  BP        String
+  town      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  lng       String
+  lat       String
+  cars      Car[]
+  users     User[]
+}
+
+model Connector {
+  id        String   @id @unique @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  cars      Car[]
+}
+
+model Model {
+  id        String   @id @unique @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  cars      Car[]
+}
+
+model User {
+  id        String   @id @unique @default(uuid())
+  firstname String
+  lastname  String
+  email     String   @unique
+  password  String
+  birthday  DateTime
+  adresse   String
+  BP        String
+  town      String
+  agency    Agency?  @relation(fields: [agencyId], references: [id])
+  agencyId  String?
+  noPermis  String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  role      Role     @default(USER)
+}
+
+model Booking {
+  id        String   @id @unique @default(uuid())
+  dateDeb   DateTime
+  dateFin   DateTime
+  prix      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  cars      Car[]
+}
+
+enum Role {
+  ADMIN
+  USER
+  SUPER_ADMIN
+}

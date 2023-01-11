@@ -11,6 +11,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         where: {
           id: id as string,
         },
+        include: {
+          bookings: {
+            include: {
+              car: {
+                include: {
+                  model: {
+                    include: {
+                      brand: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       });
       res.status(200).json(user);
       break;

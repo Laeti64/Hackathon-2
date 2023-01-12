@@ -16,7 +16,6 @@ function Cars({}: Props) {
         setLoading(false);
       });
   }, []);
-  console.log(cars);
 
   return (
     <div>

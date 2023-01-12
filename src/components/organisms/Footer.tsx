@@ -4,7 +4,7 @@ type Props = {};
 
 function Footer({}: Props) {
   return (
-    <div className="sticky bottom-0 w-screen h-[10%] flex p-5 text-xl bg-slate-50">
+    <div className="fixed bottom-0 w-screen h-[4%] mt-[5em] flex p-5 text-xl bg-slate-50">
       Footer
     </div>
   );

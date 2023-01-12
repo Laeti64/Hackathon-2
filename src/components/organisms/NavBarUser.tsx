@@ -33,31 +33,31 @@ function NavBarUser({}: Props) {
       <div
         className={`ease-in-out duration-300
 
-        fixed top-[10%] h-[75%] left-0 w-[40vw] rounded-br-full bg-[#43BF9C] p-10  text-black z-10 ${
+        fixed top-[10%] h-[75%] left-0 w-[45vw] rounded-br-full bg-[#43BF9C] p-10  text-black z-10 ${
           isSideBarVisible ? "translate-x-0 " : "translate-x-[-100%]"
         }`}>
         {isSideBarVisible && (
-          <div className="bg-[#43BF9C] w-[40vw] h-[100%] fixed rounded-br-full left-0 z-10 flex flex-col duration-300 ">
+          <div className="bg-[#43BF9C] w-[45vw] h-[100%] fixed rounded-br-full left-0 z-10 flex flex-col duration-300 ">
             <Link
-              className="px-[1em] py-[1em]"
+              className="px-[1em] py-[1em] uppercase font-extrabold"
               onClick={() => setIsSidebarVisible(!isSideBarVisible)}
               href="/">
               Home
             </Link>
             <Link
-              className="px-[1em] py-[1em]"
+              className="px-[1em] py-[1em] uppercase font-extrabold"
               onClick={() => setIsSidebarVisible(!isSideBarVisible)}
               href="/cars">
               Cars
             </Link>
             <Link
-              className="px-[1em] py-[1em]"
+              className="px-[1em] py-[1em] uppercase font-extrabold"
               onClick={() => setIsSidebarVisible(!isSideBarVisible)}
               href="/cars/new-car">
               New car
             </Link>
             <Link
-              className="px-[1em] py-[1em]"
+              className="px-[1em] py-[1em] uppercase font-extrabold"
               onClick={() => setIsSidebarVisible(!isSideBarVisible)}
               href="/availability">
               Availability
@@ -65,6 +65,7 @@ function NavBarUser({}: Props) {
           </div>
         )}
       </div>
+      <h1 className="uppercase font-extrabold">Carvolution</h1>
       <Image src={home} alt="car-home" width={50} height={50} />
     </div>
   );

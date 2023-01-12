@@ -18,7 +18,7 @@ function NewCar({}: Props): JSX.Element {
   const [cars, setCars] = useState<TCar[]>([]);
   const [categories, setCategories] = useState<TCategory[]>([]);
   const [loading, setLoading] = useState(true);
-  const [brands, setBrands] = useState<string[]>([]);
+  const [brands, setBrands] = useState<TBrand[]>([]);
   const [models, setModels] = useState<TModel[]>([]);
 
   useEffect(() => {
@@ -42,12 +42,16 @@ function NewCar({}: Props): JSX.Element {
       })
       .then(() => {
         if (cars) {
+          setBrands([]);
           cars.forEach((car: TCar) => {
             if (!allBrandsUsed.includes(car.model.brand.name)) {
-              allBrandsUsed.push(car.model.brand.name);
+              allBrandsUsed.push<TBrand>({
+                id: car.model.brandId,
+                name: car.model.brand.name,
+              });
+              setBrands(allBrandsUsed);
             }
           });
-          setBrands(allBrandsUsed);
         }
       });
     setLoading(false);
@@ -62,123 +66,136 @@ function NewCar({}: Props): JSX.Element {
       onSubmit={handleSubmit((data) =>
         carFetcher.createCar(data).then((data) => console.log(data))
       )}>
-      <input className="form" placeholder="year" {...register("year")} />
+      <div className="input-primary">
+        <label>Year</label>
+        <input {...register("year")} />
+      </div>
+      <div className="input-primary">
+        <label>1rst image url</label>
+        <input {...register("imgUrl")} />
+      </div>
+      <div className="input-primary">
+        <label>2nd image url</label>
+        <input {...register("imgUrl2")} />
+      </div>
+      <div className="input-primary">
+        <label>3rd image url</label>
+        <input {...register("imgUrl3")} />
+      </div>
+      <div className="input-primary">
+        <label>Gray card url</label>
+        <input {...register("grayCardUrl")} />
+      </div>
+      <div className="input-primary">
+        <label>Description</label>
+        <input {...register("description")} />
+      </div>
+      <div className="input-primary">
+        <label>Autonomy</label>
+        <input {...register("autonomie")} />
+      </div>
+      <div className="input-primary">
+        <label>Mile age</label>
+        <input {...register("mileAge")} />
+      </div>
+      <div className="input-primary">
+        <label>Number of places</label>
+        <input {...register("nbPlaces")} />
+      </div>
+      <div className="input-primary">
+        <label>Battery power</label>
+        <input {...register("batterie")} />
+      </div>
+      <div className="input-primary">
+        <label>Power (CV)</label>
+        <input {...register("puissance")} />
+      </div>
+      <div className="input-primary">
+        <label>Trunk capacity</label>
+        <input {...register("capacity")} />
+      </div>
+      <div className="input-primary">
+        <label>Number of doors</label>
+        <input {...register("nbPortes")} />
+      </div>
+      <div className="input-primary">
+        <label>QR Code url</label>
+        <input {...register("barCodeUrl")} />
+      </div>
+      <div className="input-primary">
+        <label>Registration</label>
+        <input {...register("registration")} />
+      </div>
+
+      <div className="input-primary">
+        <label>Vehicule category</label>
+        <select {...register("categoryId")}>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="input-primary">
+        <label>Vehicule brand</label>
+        <select {...register("brandId")}>
+          {brands.map((brand) => (
+            <option key={brand.id} value={brand.id}>
+              {brand.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="input-primary">
+        <label>Vehicule model</label>
+        <select {...register("modelId")}>
+          {models.map((model) => (
+            <option key={model.id} value={model.id}>
+              {model.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="input-primary">
+        <label>Vehicule available</label>
+        <select {...register("isAvailable")}>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div className="input-primary">
+        <label>Autonomous to drive</label>
+        <select {...register("autonomous")}>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+
+      <div className="input-primary">
+        <label>Time to charge</label>
+        <input {...register("tempsCharge")} />
+      </div>
+      <div className="input-primary">
+        <label>Price €/km</label>
+        <input {...register("prixKm")} />
+      </div>
+      <div className="input-primary">
+        <label>Price €/day</label>
+        <input {...register("prixJour")} />
+      </div>
+
+      <div className="input-primary">
+        <label>Electrik connector type</label>
+
+        <input
+          value={"5efd3b0d-25fb-412e-b60f-386c36bef59d"}
+          {...register("connectorId")}
+        />
+      </div>
+
       <input
-        className="form w-[80%]"
-        placeholder="1rst image url"
-        {...register("imgUrl")}
-      />
-      <input
-        className="form"
-        placeholder="2nd image url"
-        {...register("imgUrl2")}
-      />
-      <input
-        className="form"
-        placeholder="3rd image url"
-        {...register("imgUrl3")}
-      />
-      <input
-        className="form"
-        placeholder="gray card url"
-        {...register("grayCardUrl")}
-      />
-      <input
-        className="form"
-        placeholder="description"
-        {...register("description")}
-      />
-      <input
-        className="form"
-        placeholder="autonomie"
-        {...register("autonomie")}
-      />
-      <input className="form" placeholder="mile age" {...register("mileAge")} />
-      <input
-        className="form"
-        placeholder="number of places"
-        {...register("nbPlaces")}
-      />
-      <input
-        className="form"
-        placeholder="batterie"
-        {...register("batterie")}
-      />
-      <input
-        className="form"
-        placeholder="puissance"
-        {...register("puissance")}
-      />
-      <input
-        className="form"
-        placeholder="capacity"
-        {...register("capacity")}
-      />
-      <input
-        className="form"
-        placeholder="number of doors"
-        {...register("nbPortes")}
-      />
-      <input
-        className="form"
-        placeholder="bar code url"
-        {...register("barCodeUrl")}
-      />
-      <input
-        className="form"
-        placeholder="registration"
-        {...register("registration")}
-      />
-      <label className="label">is available</label>
-      <select className="form" {...register("isAvailable")}>
-        <option value="true">True</option>
-        <option value="false">False</option>
-      </select>
-      <label className="label">Autonomous to drive</label>
-      <select className="form" {...register("autonomous")}>
-        <option value="true">True</option>
-        <option value="false">False</option>
-      </select>
-      <input
-        className="form"
-        placeholder="time to charge"
-        {...register("tempsCharge")}
-      />
-      <input className="form" placeholder="price/km" {...register("prixKm")} />
-      <input
-        className="form"
-        placeholder="price/day"
-        {...register("prixJour")}
-      />
-      <select className="form" {...register("categoryId")}>
-        {categories.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
-      <select className="form" {...register("brandId")}>
-        {categories.map((brands) => (
-          <option key={brands.id} value={brands.id}>
-            {brands.name}
-          </option>
-        ))}
-      </select>
-      <input
-        className="form"
-        placeholder="connector type"
-        value={"5efd3b0d-25fb-412e-b60f-386c36bef59d"}
-        {...register("connectorId")}
-      />
-      <select className="form" {...register("modelId")}>
-        {models.map((model) => (
-          <option key={model.id} value={model.id}>
-            {model.name}
-          </option>
-        ))}
-      </select>
-      <input
-        className="border border-gray-500 flex w-40 h-8 m-auto mb-200  bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
+        className="border border-gray-500 flex w-40 h-8 m-auto mb-200 mb-[5em]  bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
         type="submit"
       />
     </form>

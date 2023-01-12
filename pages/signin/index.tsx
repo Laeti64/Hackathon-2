@@ -22,7 +22,7 @@ export default function Signin() {
     router.push("/");
   };
   return (
-    <div className="flex mt-20 items-center  flex-col text-primary_font h-full  w-full">
+    <div className="flex mt-20 items-center  flex-col text-primary_font h-full  w-full bg-emerald-50">
       <div>
         <h1 className="flex justify-center mb-2 text-2xl">Login</h1>
       </div>

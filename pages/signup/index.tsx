@@ -25,7 +25,7 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className=" bg-emerald-50">
       <form className="flex flex-col w-full m-auto align-middle h-screen mt-10">
         <h1 className="from-neutral-500 font-serif ml-12 mb-5">
           Vos informations personnelles

@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Marker, Popup } from "react-map-gl";
 import { MapView, Heading, Text, LocationSearch } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
-import Image from "next/image";
+
 import "@aws-amplify/ui-react/styles.css";
+
+import { Auth } from "aws-amplify";
+
 import awsExports from "../src/aws-exports";
-import signIn from "../src/signIn";
-// import signIn from "../src/aws/signIn";
+import axios from "axios";
+import axiosInstance from "../services/axiosInstance";
 
 Amplify.configure(awsExports);
 
@@ -20,9 +23,7 @@ function MarkerWithPopup({
 }) {
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleMarkerClick = ({
-    originalEvent,
-  }: mapboxgl.MapboxEvent<MouseEvent>) => {
+  const handleMarkerClick = ({ originalEvent }: any) => {
     originalEvent.stopPropagation();
     setShowPopup(true);
   };
@@ -34,7 +35,7 @@ function MarkerWithPopup({
         longitude={longitude}
         onClick={handleMarkerClick}
       />
-      {/* {showPopup && (
+      {showPopup && (
         <Popup
           latitude={latitude}
           longitude={longitude}
@@ -43,46 +44,57 @@ function MarkerWithPopup({
         >
           <Heading level={2}>Marker Information</Heading>
           <Text>Some information about a location.</Text>
-          <Image
-            src="https://www.presse-citron.net/app/uploads/2020/10/model-3-2020.jpg"
-            width={100}
-            height={100}
-            alt="alt"
-          />
         </Popup>
-      )} */}
+      )}
     </>
   );
+}
+async function signIn() {
+  try {
+    const user = await Auth.signIn(
+      process.env.NEXT_PUBLIC_COGNITO_URL || "provide an URL",
+      process.env.NEXT_PUBLIC_COGNITO_PASSWORD
+    );
+    console.log(user);
+  } catch (error) {
+    console.log("error signing in", error);
+  }
 }
 
 export default function Map() {
   const [geo, setGeo] = useState<any>(null);
+
   useEffect(() => {
-    // signIn();
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   setGeo(position.coords);
-    //   console.log(position);
-    // });
+    signIn();
+    navigator.geolocation.getCurrentPosition((position) => {
+      setGeo(position.coords);
+      console.log(position);
+    });
   }, []);
 
   return (
     <div className="w-screen h-screen">
-      <div className="relative w-1/2 h-1/2">
-        <MapView
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-          }}
-          initialViewState={{
-            latitude: 11,
-            longitude: 11,
-            zoom: 14,
-          }}
-        >
-          {/* <MarkerWithPopup latitude={1} longitude={1} /> */}
-          <LocationSearch />
-        </MapView>
+      <div className="relative w-2/3 h-2/3 m-auto mt-10">
+        {geo && (
+          <MapView
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+            }}
+            initialViewState={{
+              latitude: geo.latitude,
+              longitude: geo.longitude,
+            }}
+          >
+            <MarkerWithPopup
+              latitude={geo.latitude}
+              longitude={geo.longitude}
+            />
+
+            <LocationSearch />
+          </MapView>
+        )}
       </div>
     </div>
   );

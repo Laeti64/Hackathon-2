@@ -1,5 +1,6 @@
 import React from "react";
-import Table from "../../src/components/organisms/Table";
+import { TCar } from "../../src/types/trypes";
+import Card from "../../src/components/organisms/molecules/Card";
 
 type Props = {};
 
@@ -14,15 +15,15 @@ function Cars({}: Props) {
         setCars(data);
         setLoading(false);
       });
-    console.log(cars);
   }, []);
+  console.log(cars);
 
   return (
     <div>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        cars.map((car) => <h1 key={car.id}>{car.name}</h1>)
+        cars.map((car) => <Card key={car.index} {...car} />)
       )}
     </div>
   );

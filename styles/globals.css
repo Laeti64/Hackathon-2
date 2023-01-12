@@ -28,3 +28,12 @@ body {
 .label {
   @apply flex w-52 h-8 m-auto mt-5;
 }
+
+@layer components {
+  .input-primary {
+    @apply flex flex-col w-[70%] my-2 mx-auto font-semibold pb-2 shadow-md border border-gray-200;
+  }
+  .select-primary {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+}

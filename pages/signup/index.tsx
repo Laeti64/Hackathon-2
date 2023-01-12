@@ -100,7 +100,7 @@ function Signup() {
         <button
           type="button"
           onClick={handleSubmit}
-          className="border border-gray-500 flex w-40 h-8 m-auto my-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center">
+          className="border border-gray-500 flex w-40 h-8 m-auto py-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center">
           Sign Up
         </button>
       </form>

@@ -24,7 +24,7 @@ function Layout({ children }: TChildren) {
       </Head>
       <div className="w-screen fixed flex flex-col h-screen">
         {width > 800 ? <NavBarAdmin /> : <NavBarUser />}
-        <div className="w-full  h-[90%]   flex bg-slate-50">
+        <div className="w-full  h-[80%]   flex bg-slate-50">
           <div className="w-full h-full overflow-auto">{children}</div>
         </div>
         <Footer />

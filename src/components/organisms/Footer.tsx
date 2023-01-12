@@ -4,8 +4,8 @@ type Props = {};
 
 function Footer({}: Props) {
   return (
-    <div className="fixed bottom-0 w-screen h-[4%] mt-[5em] flex p-5 text-xl bg-slate-50">
-      Footer
+    <div className="fixed bottom-0 w-full h-[2%] p-5 text-xs bg-slate-50 flex align-middle items-center justify-center">
+      @copyrigth2023
     </div>
   );
 }

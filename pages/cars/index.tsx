@@ -1,6 +1,7 @@
 import React from "react";
 import { TCar } from "../../src/types/trypes";
 import Card from "../../src/components/organisms/molecules/Card";
+import carFetcher from "../../services/carFetcher";
 
 type Props = {};
 
@@ -9,12 +10,10 @@ function Cars({}: Props) {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/api/cars")
-      .then((res) => res.json())
-      .then((data) => {
-        setCars(data);
-        setLoading(false);
-      });
+    carFetcher.getCars().then((cars) => {
+      setCars(cars as TCar[]);
+      setLoading(false);
+    });
   }, []);
 
   return (

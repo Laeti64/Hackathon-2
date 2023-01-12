@@ -29,7 +29,7 @@ export const config = {
     "/api/bookings/:path*",
     "/api/brands/:path*",
     "/api/carmodels/:path*",
-    "/api/cars/:path*",
+    // "/api/cars/:path*",
     "/api/catgories/:path*",
   ],
 };

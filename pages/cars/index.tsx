@@ -15,15 +15,15 @@ function Cars({}: Props) {
         setCars(data);
         setLoading(false);
       });
-    console.log(cars);
   }, []);
+  console.log(cars);
 
   return (
     <div>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        cars.map((car) => <Card key={car.id} modelId={car.modelId} />)
+        cars.map((car) => <Card key={car.index} {...car} />)
       )}
     </div>
   );

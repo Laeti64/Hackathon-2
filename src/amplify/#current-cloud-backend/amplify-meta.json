@@ -1,0 +1,142 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-blognext-dev-133152-authRole",
+      "UnauthRoleArn": "arn:aws:iam::095089785693:role/amplify-blognext-dev-133152-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::095089785693:role/amplify-blognext-dev-133152-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-blognext-dev-133152-deployment",
+      "UnauthRoleName": "amplify-blognext-dev-133152-unauthRole",
+      "StackName": "amplify-blognext-dev-133152",
+      "StackId": "arn:aws:cloudformation:eu-west-1:095089785693:stack/amplify-blognext-dev-133152/184c5cc0-9275-11ed-8b76-0accfd1393ed",
+      "AmplifyAppId": "dr19609mdva53"
+    }
+  },
+  "auth": {
+    "blognext2a80399a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-blognext-dev-133152-deployment/amplify-cfn-templates/auth/blognext2a80399a-cloudformation-template.json",
+        "logicalId": "authblognext2a80399a"
+      },
+      "lastPushTimeStamp": "2023-01-12T13:18:56.752Z",
+      "output": {
+        "UserPoolId": "eu-west-1_anNiAroWc",
+        "AppClientIDWeb": "3qgu64ssjurtl6qf1834u88fp0",
+        "AppClientID": "2cqs326sh6jg5b0t026s0ak0j5",
+        "IdentityPoolId": "eu-west-1:036b2f8a-485b-41c7-8641-d7fe7e3c8555",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-west-1:095089785693:userpool/eu-west-1_anNiAroWc",
+        "IdentityPoolName": "blognext2a80399a_identitypool_2a80399a__dev",
+        "UserPoolName": "blognext2a80399a_userpool_2a80399a"
+      },
+      "lastPushDirHash": "LwkD+hF9fwt7UOdMOuQ7gDvop7c="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "blognext2a80399a",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2023-01-12T13:18:56.755Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-blognext-dev-133152-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {
+        "allGroupRole": "arn:aws:iam::095089785693:role/eu-west-1_anNiAroWc-allGroupRole",
+        "geoGroupRole": "arn:aws:iam::095089785693:role/eu-west-1_anNiAroWc-geoGroupRole"
+      },
+      "lastPushDirHash": "vT7wj8dX0bb+kEdZqPd35s6JxRw="
+    }
+  },
+  "geo": {
+    "placeindex2bb0e76a": {
+      "isDefault": true,
+      "providerPlugin": "awscloudformation",
+      "service": "PlaceIndex",
+      "dataProvider": "HERE",
+      "dataSourceIntendedUse": "SingleUse",
+      "accessType": "AuthorizedAndGuestUsers",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "blognext2a80399a",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-blognext-dev-133152-deployment/amplify-cfn-templates/geo/placeindex2bb0e76a-cloudformation-template.json",
+        "logicalId": "geoplaceindex2bb0e76a"
+      },
+      "lastPushTimeStamp": "2023-01-12T13:18:56.758Z",
+      "output": {
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:geo:eu-west-1:095089785693:place-index/placeindex2bb0e76a-dev",
+        "Name": "placeindex2bb0e76a-dev"
+      },
+      "lastPushDirHash": "k3cPPCokA1QfFqQfiqJNRIGqKX8="
+    },
+    "map561290f1": {
+      "isDefault": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Map",
+      "mapStyle": "VectorEsriStreets",
+      "accessType": "AuthorizedAndGuestUsers",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "blognext2a80399a",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-blognext-dev-133152-deployment/amplify-cfn-templates/geo/map561290f1-cloudformation-template.json",
+        "logicalId": "geomap561290f1"
+      },
+      "lastPushTimeStamp": "2023-01-12T13:18:57.004Z",
+      "output": {
+        "Style": "VectorEsriStreets",
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:geo:eu-west-1:095089785693:map/map561290f1-dev",
+        "Name": "map561290f1-dev"
+      },
+      "lastPushDirHash": "u8pgGGVWHnmW1zZ4B0GZ8qM8DpU="
+    }
+  }
+}

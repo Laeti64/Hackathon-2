@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+}
+
 .sidebar {
   transition: all 0.3s ease-in-out;
   transform: translateX(100%);

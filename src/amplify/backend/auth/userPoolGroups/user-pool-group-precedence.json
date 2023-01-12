@@ -1,0 +1,10 @@
+[
+  {
+    "groupName": "all",
+    "precedence": 1
+  },
+  {
+    "groupName": "geo",
+    "precedence": 2
+  }
+]

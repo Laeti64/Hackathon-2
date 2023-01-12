@@ -8,7 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     case "GET":
       const bookings = await prisma.booking.findMany({
         include: {
-          cars: true,
+          car: true,
         },
       });
       res.status(200).json(bookings);

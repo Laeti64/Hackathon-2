@@ -42,7 +42,8 @@ export default function CarouselForCard({ imgUrl, imgUrl2, imgUrl3 }: IProps) {
             className="rounded-t-xl"
             src={imgUrl!}
             alt="car-1"
-            fill={true}></Image>
+            width={400}
+            height={150}></Image>
         </div>
         <div className="relative">
           <Image

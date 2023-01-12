@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sidebar {
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: gray;
+}
+
+.visible {
+  transform: translateX(0);
+}
+
+.form {
+  @apply border border-gray-500 flex w-52 h-8 m-auto my-2 rounded-md p-2 shadow-md;
+}

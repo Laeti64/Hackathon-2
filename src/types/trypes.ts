@@ -1,5 +1,5 @@
 export type TCar = {
-  id: number;
+  id: string;
   year: number;
   imgUrl: string;
   imgUrl2: string;
@@ -24,4 +24,17 @@ export type TCar = {
   brandId: string;
   connectorId: string;
   modelId: string;
+  model: TModel;
+};
+
+export type TModel = {
+  id: string;
+  name: string;
+  brandId: string;
+  brand: TBrand;
+};
+
+export type TBrand = {
+  id: string;
+  name: string;
 };

@@ -23,7 +23,14 @@ function Cars({}: Props) {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        cars.map((car) => <Card key={car.index} {...car} />)
+        cars.map((car) => (
+          <div>
+            <Card key={car.index} {...car} />
+            <Card key={car.index} {...car} />
+            <Card key={car.index} {...car} />
+            <Card key={car.index} {...car} />
+          </div>
+        ))
       )}
     </div>
   );

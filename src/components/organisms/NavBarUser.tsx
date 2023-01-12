@@ -32,9 +32,9 @@ function NavBarUser({}: Props) {
       )}
       <div
         className={`ease-in-out duration-300
-         top-[10%] left-0 w-[40vw] bg-[#43BF9C]  p-10 pl-20 text-black fixed h-full z-10 ${
-           isSideBarVisible ? "translate-x-0 " : "translate-x-[-100%]"
-         }`}>
+        fixed top-[10%] left-0 w-[40vw] bg-[#43BF9C]  p-10 pl-20 text-black  h-full z-10 ${
+          isSideBarVisible ? "translate-x-0 " : "translate-x-[-100%]"
+        }`}>
         {isSideBarVisible && (
           <div className="bg-[#43BF9C] w-[40vw] h-[100%] fixed top-[10%] left-0 z-10 flex flex-col duration-300">
             <Link

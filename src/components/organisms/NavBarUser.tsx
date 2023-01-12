@@ -12,6 +12,7 @@ function NavBarUser({}: Props) {
 
   return (
     <div className="w-screen h-[10%] sticky top-0 flex items-center justify-between p-5 text-xl bg-[#43BF9C] z-10">
+
       {isSideBarVisible ? (
         <Image
           className="flex text-4xl text-black items-center cursor-pointer z-10"

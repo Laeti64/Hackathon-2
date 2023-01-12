@@ -1,10 +1,10 @@
-import { TCar } from "../src/types/trypes";
+import { TCar } from "../src/types/types";
 import axiosInstance from "./axiosInstance";
 
 const carFetcher = {
   createCar: async (data: string) => {
     try {
-      await axiosInstance.post("/cars", JSON.parse(JSON.stringify(data)));
+      await axiosInstance.post<TCar>("/cars", JSON.parse(JSON.stringify(data)));
     } catch (error) {
       throw error;
     } finally {

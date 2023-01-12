@@ -1,5 +1,5 @@
 import React from "react";
-import { TCar } from "../../src/types/trypes";
+import { TCar } from "../../src/types/types";
 import Card from "../../src/components/organisms/molecules/Card";
 import carFetcher from "../../services/carFetcher";
 

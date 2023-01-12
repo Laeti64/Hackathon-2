@@ -1,5 +1,5 @@
 import React from "react";
-import { TCar } from "../../../types/trypes";
+import { TCar } from "../../../types/types";
 import Image from "next/image";
 import CarouselForCard from "./CarouselForCard";
 

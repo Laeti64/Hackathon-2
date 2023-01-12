@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { TCar } from "../../src/types/trypes";
+import { TCar, TCategory } from "../../src/types/types";
 import carFetcher from "../../services/carFetcher";
+import categoryFetcher from "../../services/categoryFetcher";
 
 type Props = {};
 
@@ -11,6 +12,26 @@ function NewCar({}: Props): JSX.Element {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [cars, setCars] = useState<TCar[]>([]);
+  const [categories, setCategories] = useState<TCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    carFetcher.getCars().then((data) => {
+      if (data) {
+        setCars(data);
+      }
+    });
+    categoryFetcher.getCategories().then((data) => {
+      if (data) {
+        setCategories(data);
+      }
+    });
+    setLoading(false);
+  }, []);
+
+  console.log(cars);
+  console.log(categories);
 
   return (
     <form
@@ -105,8 +126,11 @@ function NewCar({}: Props): JSX.Element {
         {...register("prixJour")}
       />
       <select className="form" {...register("categoryId")}>
-        <option value="true">True</option>
-        <option value="false">False</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
       </select>
       <input
         className="form"

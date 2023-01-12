@@ -5,7 +5,7 @@ import Card from "../../src/components/organisms/molecules/Card";
 type Props = {};
 
 function Cars({}: Props) {
-  const [cars, setCars] = React.useState([]);
+  const [cars, setCars] = React.useState<TCar[]>([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -16,14 +16,13 @@ function Cars({}: Props) {
         setLoading(false);
       });
   }, []);
-  console.log(cars);
 
   return (
     <div>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        cars.map((car) => <Card key={car.index} {...car} />)
+        cars.map((car) => <Card key={car.id} {...car} />)
       )}
     </div>
   );

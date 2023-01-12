@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typeRoots": ["."],
+    "typeRoots": ["./types"],
     "declaration": true
   },
   "paths": {

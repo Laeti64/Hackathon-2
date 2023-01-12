@@ -12,6 +12,7 @@ const signIn = async (req: NextApiRequest, res: NextApiResponse) => {
         email,
       },
     });
+
     if (!user) {
       return res.status(404).json("user not found");
     }

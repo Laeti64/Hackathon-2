@@ -19,8 +19,8 @@ function Signup() {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    axios.post("/api/auth/signup", newUser);
+  const handleSubmit = async () => {
+    await axios.post("/api/auth/signup", newUser);
     router.push("/signin");
   };
 
@@ -98,7 +98,7 @@ function Signup() {
         />
 
         <button
-          type="submit"
+          type="button"
           onClick={handleSubmit}
           className="border border-gray-500 flex w-40 h-8 m-auto my-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
         >

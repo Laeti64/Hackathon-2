@@ -15,17 +15,14 @@ Amplify.configure(awsExports);
 function MarkerWithPopup({
   latitude,
   longitude,
-  name,
-  adresse,
-  id,
+  agency,
 }: {
   latitude: number;
   longitude: number;
-  name: String;
-  adresse: String;
-  id: String;
+  agency: TAgency;
 }) {
   const [showPopup, setShowPopup] = useState(false);
+  const [chosenAgency, setChosenAgency] = useState<TAgency>();
   const router = useRouter();
   const handleMarkerClick = ({ originalEvent }: any) => {
     originalEvent.stopPropagation();
@@ -33,9 +30,9 @@ function MarkerWithPopup({
   };
 
   const handleRoute = () => {
-    console.log(id);
-    router.push(`/agencies/${id}`);
+    router.push(`/agencies/${agency.id}`);
   };
+
   return (
     <>
       <Marker
@@ -51,9 +48,9 @@ function MarkerWithPopup({
           onClose={() => setShowPopup(false)}
         >
           <Heading onClick={handleRoute} level={5}>
-            {name}
+            {agency.name}
           </Heading>
-          <Text onClick={handleRoute}>{adresse}</Text>
+          <Text onClick={handleRoute}>{agency.address}</Text>
         </Popup>
       )}
     </>
@@ -65,7 +62,6 @@ async function signIn() {
       process.env.NEXT_PUBLIC_COGNITO_URL || "provide an URL",
       process.env.NEXT_PUBLIC_COGNITO_PASSWORD
     );
-    console.log(user);
   } catch (error) {
     console.log("error signing in", error);
   }
@@ -81,7 +77,7 @@ export default function Map() {
       setGeo(position.coords);
     });
   }, []);
-  console.log(geo);
+
   useEffect(() => {
     agencyFetcher.getAgencies().then((data) => {
       if (data) {
@@ -89,7 +85,7 @@ export default function Map() {
       }
     });
   }, []);
-  console.log(agencies);
+
   return (
     <div className="flex flex-col w-screen h-screen">
       <h1 className="from-neutral-500 font-serif mx-auto mt-5">
@@ -115,9 +111,7 @@ export default function Map() {
                   key={e.id as string}
                   latitude={+e.lat}
                   longitude={+e.lng}
-                  name={e.name}
-                  adresse={e.address}
-                  id={e.id}
+                  agency={e}
                 />
               );
             })}

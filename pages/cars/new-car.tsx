@@ -12,13 +12,6 @@ function NewCar({}: Props): JSX.Element {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      const cars = await carFetcher.getAllCars(),
-        [];
-    };
-  });
-
   return (
     <form
       className="h-flex flex-col w-full m-auto align-middle h-screen mt-10"

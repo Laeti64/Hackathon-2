@@ -16,3 +16,7 @@
 .visible {
   transform: translateX(0);
 }
+
+.form {
+  @apply border border-gray-500 flex w-52 h-8 m-auto my-2 rounded-md p-2 shadow-md;
+}

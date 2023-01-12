@@ -5,7 +5,9 @@ import { SignJWT, jwtVerify, type JWTPayload } from "jose";
 
 const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    console.log(req.body);
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+
     const newUser = await prisma.user.create({
       data: {
         ...req.body,

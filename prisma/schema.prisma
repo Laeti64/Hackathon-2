@@ -105,7 +105,7 @@ model User {
   lastname  String
   email     String    @unique
   password  String
-  birthday  DateTime
+  birthday  String
   adresse   String
   BP        String
   town      String

@@ -4,7 +4,7 @@ type Props = {};
 
 function NavBarAdmin({}: Props) {
   return (
-    <div className="w-screen h-[10%] flex items-center p-5 text-xl bg-slate-50">
+    <div className="w-screen h-[10%] flex items-center p-5 text-xl bg-[#43BF9C]">
       <ul className="w-[60%] justify-around flex ">
         <li>
           <Link href="/">Home</Link>

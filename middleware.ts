@@ -24,8 +24,8 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    "/api/users/:path*",
-    "/api/agencies/:path*",
+    // "/api/users/:path*",
+    // "/api/agencies/:path*",
     "/api/bookings/:path*",
     "/api/brands/:path*",
     "/api/carmodels/:path*",

@@ -1,4 +1,3 @@
-import { TBrand } from "./types";
 export type TCar = {
   id: string;
   year: number;
@@ -43,4 +42,16 @@ export type TBrand = {
 export type TCategory = {
   id: string;
   name: string;
+};
+
+export type TAgency = {
+  id: String;
+  name: String;
+  address: String;
+  BP: String;
+  town: String;
+  createdAt: Date;
+  updatedAt: Date;
+  lng: String;
+  lat: String;
 };

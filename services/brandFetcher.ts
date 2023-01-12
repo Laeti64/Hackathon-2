@@ -1,64 +1,64 @@
 import { TBrand } from "../src/types/types";
 import axiosInstance from "./axiosInstance";
 
-const modelFetcher = {
-  createModel: async (data: string) => {
+const brandFetcher = {
+  createBrand: async (data: string) => {
     try {
-      await axiosInstance.post<TModel[]>(
-        "/carModels",
+      await axiosInstance.post<TBrand[]>(
+        "/brands",
         JSON.parse(JSON.stringify(data))
       );
     } catch (error) {
       throw error;
     } finally {
-      console.log("createModel is ok !");
+      console.log("createBrand is ok !");
     }
   },
 
-  getModels: async () => {
+  getBrands: async () => {
     try {
-      const { data } = await axiosInstance.get<TModel[]>("/carModels");
+      const { data } = await axiosInstance.get<TBrand[]>("/brands");
       return data ? data : null;
     } catch (error) {
       throw error;
     } finally {
-      console.log("getModels is ok !");
+      console.log("getBrands is ok !");
     }
   },
 
-  getModelById: async (id: string) => {
+  getBrandById: async (id: string) => {
     try {
-      const { data } = await axiosInstance.get<TModel>(`/carModels/${id}`);
+      const { data } = await axiosInstance.get<TBrand>(`/brands/${id}`);
       return data ? data : null;
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("getModelById is ok !");
+      console.log("getBrandById is ok !");
     }
   },
 
-  updateModelById: async (id: string, data: string) => {
+  updateBrandById: async (id: string, data: string) => {
     try {
-      await axiosInstance.put<TModel>(
-        `/carModels/${id}`,
+      await axiosInstance.put<TBrand>(
+        `/brands/${id}`,
         JSON.parse(JSON.stringify(data))
       );
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("updateModelById is ok !");
+      console.log("updateBrandById is ok !");
     }
   },
 
-  deleteModelById: async (id: string) => {
+  deleteBrandById: async (id: string) => {
     try {
-      await axiosInstance.delete<TModel>(`/carModels/${id}`);
+      await axiosInstance.delete<TBrand>(`/brands/${id}`);
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("deleteModelById is ok !");
+      console.log("deleteBrandById is ok !");
     }
   },
 };
 
-export default modelFetcher;
+export default brandFetcher;

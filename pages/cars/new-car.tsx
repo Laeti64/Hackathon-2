@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { TCar, TCategory } from "../../src/types/types";
+import { TCar, TCategory, TBrand, TModel } from "../../src/types/types";
 import carFetcher from "../../services/carFetcher";
 import categoryFetcher from "../../services/categoryFetcher";
+import brandFetcher from "../../services/brandFetcher";
+import { textChangeRangeIsUnchanged } from "typescript";
+import modelFetcher from "../../services/modelFetcher";
 
 type Props = {};
 
@@ -15,18 +18,38 @@ function NewCar({}: Props): JSX.Element {
   const [cars, setCars] = useState<TCar[]>([]);
   const [categories, setCategories] = useState<TCategory[]>([]);
   const [loading, setLoading] = useState(true);
+  const [brands, setBrands] = useState<string[]>([]);
+  const [models, setModels] = useState<TModel[]>([]);
 
   useEffect(() => {
+    const allBrandsUsed: string[] = [];
     carFetcher.getCars().then((data) => {
       if (data) {
         setCars(data);
       }
     });
-    categoryFetcher.getCategories().then((data) => {
+    modelFetcher.getModels().then((data) => {
       if (data) {
-        setCategories(data);
+        setModels(data);
       }
     });
+    categoryFetcher
+      .getCategories()
+      .then((data) => {
+        if (data) {
+          setCategories(data);
+        }
+      })
+      .then(() => {
+        if (cars) {
+          cars.forEach((car: TCar) => {
+            if (!allBrandsUsed.includes(car.model.brand.name)) {
+              allBrandsUsed.push(car.model.brand.name);
+            }
+          });
+          setBrands(allBrandsUsed);
+        }
+      });
     setLoading(false);
   }, []);
 
@@ -36,7 +59,9 @@ function NewCar({}: Props): JSX.Element {
   return (
     <form
       className="h-flex flex-col w-full m-auto align-middle h-screen mt-10"
-      onSubmit={handleSubmit((data) => console.log(data))}>
+      onSubmit={handleSubmit((data) =>
+        carFetcher.createCar(data).then((data) => console.log(data))
+      )}>
       <input className="form" placeholder="year" {...register("year")} />
       <input
         className="form w-[80%]"
@@ -132,17 +157,28 @@ function NewCar({}: Props): JSX.Element {
           </option>
         ))}
       </select>
+      <select className="form" {...register("brandId")}>
+        {categories.map((brands) => (
+          <option key={brands.id} value={brands.id}>
+            {brands.name}
+          </option>
+        ))}
+      </select>
       <input
         className="form"
-        placeholder="capacity"
-        {...register("capacity")}
+        placeholder="connector type"
+        value={"5efd3b0d-25fb-412e-b60f-386c36bef59d"}
+        {...register("connectorId")}
       />
-      <input className="form" {...register("lastName", { required: true })} />
-      {errors.lastName && <p>Last name is required.</p>}
-      <input className="form" {...register("age", { pattern: /\d+/ })} />
-      {errors.age && <p>Please enter number for age.</p>}
+      <select className="form" {...register("modelId")}>
+        {models.map((model) => (
+          <option key={model.id} value={model.id}>
+            {model.name}
+          </option>
+        ))}
+      </select>
       <input
-        className="border border-gray-500 flex w-40 h-8 m-auto my-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
+        className="border border-gray-500 flex w-40 h-8 m-auto mb-200  bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
         type="submit"
       />
     </form>

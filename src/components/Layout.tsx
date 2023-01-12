@@ -10,9 +10,10 @@ type TChildren = { children: React.ReactNode };
 function Layout({ children }: TChildren) {
   const { width, height } = useScreenDimensions();
 
-  useEffect(() => {
-    console.log(width, height);
-  }, [width, height]);
+  // useEffect(() => {
+  //   console.log(width, height);
+  // }, [width, height]);
+
   return (
     <>
       <Head>

@@ -1,3 +1,4 @@
+import { TBrand } from "./types";
 export type TCar = {
   id: string;
   year: number;
@@ -35,6 +36,11 @@ export type TModel = {
 };
 
 export type TBrand = {
+  id: string;
+  name: string;
+};
+
+export type TCategory = {
   id: string;
   name: string;
 };

@@ -24,3 +24,7 @@ body {
 .form {
   @apply border border-gray-500 flex w-52 h-8 m-auto my-2 rounded-md p-2 shadow-md;
 }
+
+.label {
+  @apply flex w-52 h-8 m-auto mt-5;
+}

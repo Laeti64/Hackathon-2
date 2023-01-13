@@ -26,7 +26,7 @@ const agencyFetcher = {
     }
   },
 
-  getAgencyById: async (id: string) => {
+  getAgencyById: async (id: string | undefined) => {
     try {
       const { data } = await axiosInstance.get<TAgency>(`/agencies/${id}`);
       return data ? data : null;

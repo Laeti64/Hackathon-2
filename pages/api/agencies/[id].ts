@@ -12,7 +12,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           id: id as string,
         },
         include: {
-          users: true,
+          cars: {
+            include: {
+              model: {
+                include: {
+                  brand: true,
+                },
+              },
+            },
+          },
         },
       });
       res.status(200).json(agency);

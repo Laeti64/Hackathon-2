@@ -62,7 +62,7 @@ function NewCar({}: Props): JSX.Element {
 
   return (
     <form
-      className="h-flex flex-col w-full m-auto align-middle h-screen mt-10"
+      className="h-flex flex-col w-full h-full m-auto align-middle mt-10 "
       onSubmit={handleSubmit((data) =>
         carFetcher.createCar(data).then((data) => console.log(data))
       )}>
@@ -195,7 +195,7 @@ function NewCar({}: Props): JSX.Element {
       </div>
 
       <input
-        className="border border-gray-500 flex w-40 h-8 m-auto mb-200 mb-[5em]  bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
+        className="border border-gray-500 flex mb-32 w-40 h-8 m-auto bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
         type="submit"
       />
     </form>

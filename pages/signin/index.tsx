@@ -22,8 +22,8 @@ export default function Signin() {
     router.push("/");
   };
   return (
-    <div className="flex mt-20 items-center  flex-col text-primary_font h-full  w-full bg-emerald-50">
-      <div>
+    <div className="fixed top-[0%] flex mt-20 items-center  flex-col text-primary_font h-full  w-full bg-gradient-to-b from-emerald-50 to-slate-50">
+      <div className="mt-10">
         <h1 className="flex justify-center mb-2 text-2xl">Login</h1>
       </div>
       <form className="flex space-y-5 flex-col justify-center">
@@ -66,8 +66,7 @@ export default function Signin() {
         <button
           className="border border-gray-500 flex w-40 h-8 m-auto my-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
           type="submit"
-          onClick={handleSubmit}
-        >
+          onClick={handleSubmit}>
           SIGN IN
         </button>
       </div>

@@ -10,6 +10,9 @@ function NavBarAdmin({}: Props) {
           <Link href="/">Home</Link>
         </li>
         <li>
+          <Link href="/calendar/my-reservations">My Reservations</Link>
+        </li>
+        <li>
           <Link href="/cars">Cars</Link>
         </li>
         <li>

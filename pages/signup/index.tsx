@@ -25,8 +25,8 @@ function Signup() {
   };
 
   return (
-    <div className=" bg-emerald-50">
-      <form className="flex flex-col w-full m-auto align-middle h-screen mt-10">
+    <div className=" fixed top-[10%] w-full h-full  bg-gradient-to-b from-emerald-50 to-slate-50">
+      <form className="flex flex-col w-full m-auto align-middle mt-10">
         <h1 className="from-neutral-500 font-serif ml-12 mb-5">
           Vos informations personnelles
         </h1>
@@ -100,7 +100,7 @@ function Signup() {
         <button
           type="button"
           onClick={handleSubmit}
-          className="border border-gray-500 flex w-40 h-8 m-auto py-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center">
+          className="border border-gray-500 flex w-40 h-8 m-auto mt-3 p-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center">
           Sign Up
         </button>
       </form>

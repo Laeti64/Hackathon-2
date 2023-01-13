@@ -45,8 +45,7 @@ function MarkerWithPopup({
           latitude={latitude}
           longitude={longitude}
           offset={{ bottom: [0, -40] }}
-          onClose={() => setShowPopup(false)}
-        >
+          onClose={() => setShowPopup(false)}>
           <Heading onClick={handleRoute} level={5}>
             {agency.name}
           </Heading>
@@ -87,7 +86,7 @@ export default function Map() {
   }, []);
 
   return (
-    <div className="flex flex-col w-screen h-screen">
+    <div className="flex flex-col w-screen h-full bg-gradient-to-b from-emerald-50 to-slate-50">
       <h1 className="from-neutral-500 font-serif mx-auto mt-5">
         Select your favourite agency
       </h1>
@@ -103,8 +102,7 @@ export default function Map() {
               latitude: geo.latitude,
               longitude: geo.longitude,
               zoom: 9,
-            }}
-          >
+            }}>
             {agencies.map((e) => {
               return (
                 <MarkerWithPopup

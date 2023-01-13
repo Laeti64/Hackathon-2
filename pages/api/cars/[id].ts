@@ -16,6 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               brand: true,
             },
           },
+          agencies: true,
         },
       });
       res.status(200).json(car);

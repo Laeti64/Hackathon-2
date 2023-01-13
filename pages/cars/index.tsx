@@ -17,7 +17,7 @@ function Cars({}: Props) {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-b from-emerald-50 to-slate-50">
       {loading ? (
         <div>Loading...</div>
       ) : (

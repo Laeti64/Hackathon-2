@@ -28,7 +28,7 @@ function Signup() {
     <div className=" bg-emerald-50">
       <form className="flex flex-col w-full m-auto align-middle h-screen mt-10">
         <h1 className="from-neutral-500 font-serif ml-12 mb-5">
-          Vos informations personnelles
+          Your personal informations
         </h1>
         <input
           onChange={(e) => handleChange(e)}
@@ -80,7 +80,7 @@ function Signup() {
           placeholder="Driver license number"
         />
         <h1 className="from-neutral-500 font-serif ml-12 mt-5 mb-5">
-          Vos identifiants
+          Your credentials
         </h1>
         <input
           onChange={(e) => handleChange(e)}
@@ -100,7 +100,8 @@ function Signup() {
         <button
           type="button"
           onClick={handleSubmit}
-          className="border border-gray-500 flex w-40 h-8 m-auto py-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center">
+          className="border border-gray-500 flex w-40 h-8 m-auto py-2   bg-gradient-to-r from-[#43BF9C] via-green-300 to-[#43BF9C] rounded-md justify-center"
+        >
           Sign Up
         </button>
       </form>

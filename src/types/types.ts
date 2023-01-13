@@ -54,4 +54,5 @@ export type TAgency = {
   updatedAt: Date;
   lng: String;
   lat: String;
+  cars: TCar[];
 };

@@ -24,6 +24,22 @@ function CarsAgency() {
       {loading ? (
         <>Loading...</>
       ) : (
+        agency && (
+          <div className="flex items-center flex-col justify-center text-center align-middle m-auto">
+            <h1 className="from-neutral-500 font-serif  mt-5 flex items-center text-center m-auto">
+              Welcome to {agency.town} agency!{" "}
+            </h1>
+            <p className="from-neutral-500 font-serif  mb-5 m-auto">
+              {" "}
+              Here are our available cars
+            </p>
+          </div>
+        )
+      )}
+
+      {loading ? (
+        <>Loading...</>
+      ) : (
         agency &&
         agency.cars &&
         agency?.cars.map((car) => <Card key={car.id} {...car} />)

@@ -10,6 +10,7 @@ export type TCar = {
   mileAge: number;
   nbPlace: number;
   batterie: number;
+  agencyId: string;
   puissance: string;
   capacity: number;
   nbPortes: number;
@@ -45,8 +46,8 @@ export type TCategory = {
 };
 
 export type TAgency = {
-  id: String;
-  name: String;
+  id: string;
+  name: string;
   address: String;
   BP: String;
   town: String;
